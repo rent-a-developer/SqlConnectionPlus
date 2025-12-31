@@ -1,0 +1,63 @@
+# https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: .NET Build and run Tests
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+env:
+  ConnectionString: Server=localhost,1433;User Id=sa;Password=wWUtXe$N9#;MultipleActiveResultSets=True;Encrypt=False;
+
+jobs:
+  build:
+    name: Build and run Tests
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        dotnet-version: [ '8.0.x' ]
+        
+    services:
+        sqlserver:
+            image: mcr.microsoft.com/mssql/server:2022-latest
+            env:
+                ACCEPT_EULA: Y
+                MSSQL_PID: Express
+                MSSQL_SA_PASSWORD: "wWUtXe$N9#"
+            ports:
+                - 1433:1433
+            options: >-
+              --health-cmd "/opt/mssql-tools18/bin/sqlcmd -N -C -S localhost -U sa -P \"${MSSQL_SA_PASSWORD}\" -Q \"SELECT 1\""
+              --health-interval 10s
+              --health-timeout 5s
+              --health-retries 5                
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: ${{ matrix.dotnet-version }}
+        
+    - name: Restore dependencies
+      run: dotnet restore
+      
+    - name: Build
+      run: dotnet build --no-restore --configuration Release
+        
+    - name: Test with dotnet
+      run: dotnet test --no-restore --logger trx --results-directory "TestResults-${{ matrix.dotnet-version }}"
+      
+    - name: Upload dotnet test results
+      uses: actions/upload-artifact@v4
+      with:
+        name: dotnet-results-${{ matrix.dotnet-version }}
+        path: TestResults-${{ matrix.dotnet-version }}
+        
+      # Use always() to always run this step to publish test results when there are test failures
+      if: ${{ always() }}

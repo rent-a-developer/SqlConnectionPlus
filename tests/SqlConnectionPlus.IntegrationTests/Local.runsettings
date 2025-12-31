@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+	<RunConfiguration>
+		<EnvironmentVariables>
+			<ConnectionString>Data Source=.\SQLSERVER2022;Integrated Security=True;Encrypt=False;MultipleActiveResultSets=True</ConnectionString>
+		</EnvironmentVariables>
+	</RunConfiguration>
+</RunSettings>

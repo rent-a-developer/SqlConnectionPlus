@@ -1,0 +1,14 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="CHANGELOG.md" />
+    <File Path="CONTRIBUTING.md" />
+    <File Path="CREATERELEASE.md" />
+    <File Path="LICENSE.md" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="src/SqlConnectionPlus/SqlConnectionPlus.csproj" />
+  <Project Path="benchmarks/SqlConnectionPlus.Benchmarks/SqlConnectionPlus.Benchmarks.csproj" Id="beba4892-ec19-4a36-a22d-51d1bab9cba2" />
+  <Project Path="tests/SqlConnectionPlus.UnitTests/SqlConnectionPlus.UnitTests.csproj" Id="1ee1a1c4-cd33-4c04-bf42-72f52cd60606" />
+  <Project Path="tests/SqlConnectionPlus.IntegrationTests/SqlConnectionPlus.IntegrationTests.csproj" Id="5704a89e-05f8-4afe-a359-d6b9dd62725c" />
+</Solution>

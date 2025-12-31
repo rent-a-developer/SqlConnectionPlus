@@ -1,0 +1,13 @@
+global using System.Collections;
+global using System.Collections.Concurrent;
+global using System.ComponentModel.DataAnnotations;
+global using System.ComponentModel.DataAnnotations.Schema;
+global using System.Data;
+global using System.Data.Common;
+global using System.Globalization;
+global using System.Runtime.CompilerServices;
+global using Microsoft.Data.SqlClient;
+global using RentADeveloper.SqlConnectionPlus.Converters;
+global using RentADeveloper.SqlConnectionPlus.Extensions;
+global using RentADeveloper.SqlConnectionPlus.Helpers;
+global using RentADeveloper.SqlConnectionPlus.SqlCommands;
