@@ -155,7 +155,7 @@ public class EntityHelperTests : TestsBase
 
     [Fact]
     public void
-        PopulateSqlParametersFromEntityProperties_EnumProperty_EnumSerializationModeIsIntegers_ShouldUseSerializeEnumToInteger()
+        PopulateSqlParametersFromEntityProperties_EnumProperty_EnumSerializationModeIsIntegers_ShouldSerializeEnumToInteger()
     {
         SqlConnectionExtensions.EnumSerializationMode = EnumSerializationMode.Integers;
 
@@ -175,7 +175,7 @@ public class EntityHelperTests : TestsBase
 
     [Fact]
     public void
-        PopulateSqlParametersFromEntityProperties_EnumProperty_EnumSerializationModeIsStrings_ShouldUseSerializeEnumToString()
+        PopulateSqlParametersFromEntityProperties_EnumProperty_EnumSerializationModeIsStrings_ShouldSerializeEnumToString()
     {
         SqlConnectionExtensions.EnumSerializationMode = EnumSerializationMode.Strings;
 

@@ -7,7 +7,7 @@ public class InterpolatedSqlStatementTests : TestsBase
 {
     [Fact]
     public void
-        AppendFormatted_InterpolatedParameter_EnumValue_EnumSerializationModeIsIntegers_ShouldUseSerializeEnumToIntegers()
+        AppendFormatted_InterpolatedParameter_EnumValue_EnumSerializationModeIsIntegers_ShouldSerializeEnumToIntegers()
     {
         SqlConnectionExtensions.EnumSerializationMode = EnumSerializationMode.Integers;
 
@@ -21,7 +21,7 @@ public class InterpolatedSqlStatementTests : TestsBase
 
     [Fact]
     public void
-        AppendFormatted_InterpolatedParameter_EnumValue_EnumSerializationModeIsStrings_ShouldUseSerializeEnumToString()
+        AppendFormatted_InterpolatedParameter_EnumValue_EnumSerializationModeIsStrings_ShouldSerializeEnumToString()
     {
         SqlConnectionExtensions.EnumSerializationMode = EnumSerializationMode.Strings;
 
@@ -397,7 +397,7 @@ public class InterpolatedSqlStatementTests : TestsBase
     }
 
     [Fact]
-    public void Constructor_Code_Parameters_EnumValue_EnumSerializationModeIsIntegers_ShouldUseSerializeEnumToInteger()
+    public void Constructor_Code_Parameters_EnumValue_EnumSerializationModeIsIntegers_ShouldSerializeEnumToInteger()
     {
         SqlConnectionExtensions.EnumSerializationMode = EnumSerializationMode.Integers;
 
@@ -413,7 +413,7 @@ public class InterpolatedSqlStatementTests : TestsBase
     }
 
     [Fact]
-    public void Constructor_Code_Parameters_EnumValue_EnumSerializationModeIsStrings_ShouldUseSerializeEnumToString()
+    public void Constructor_Code_Parameters_EnumValue_EnumSerializationModeIsStrings_ShouldSerializeEnumToString()
     {
         SqlConnectionExtensions.EnumSerializationMode = EnumSerializationMode.Strings;
 
