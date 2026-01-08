@@ -374,6 +374,20 @@ public class SqlConnectionExtensions_QueryTuplesTests : DatabaseTestsBase
             );
 
     [Fact]
+    public void QueryTuples_UnsupportedFieldType_ShouldThrow() =>
+        Invoking(() =>
+                this.Connection.QueryTuples<ValueTuple<Object>>(
+                    "SELECT CONVERT(SQL_VARIANT, 123) AS Value",
+                    cancellationToken: TestContext.Current.CancellationToken
+                ).ToList()
+            )
+            .Should().Throw<ArgumentException>()
+            .WithMessage(
+                $"The data type * of the column 'Value' returned by the SQL statement is not " +
+                $"supported.*"
+            );
+
+    [Fact]
     public async Task QueryTuplesAsync_CancellationToken_ShouldCancelOperationIfCancellationIsRequested()
     {
         var cancellationToken = CreateCancellationTokenThatIsCancelledAfter100Milliseconds();
@@ -742,5 +756,19 @@ public class SqlConnectionExtensions_QueryTuplesTests : DatabaseTestsBase
             .WithMessage(
                 $"The specified type {typeof((Int32, Int32, Int32, Int32, Int32, Int32, Int32, Int32))} is not a " +
                 $"value tuple type or it is a value tuple type with more than 7 fields.*"
+            );
+
+    [Fact]
+    public Task QueryTuplesAsync_UnsupportedFieldType_ShouldThrow() =>
+        Invoking(() =>
+                this.Connection.QueryTuplesAsync<ValueTuple<Object>>(
+                    "SELECT CONVERT(SQL_VARIANT, 123) AS Value",
+                    cancellationToken: TestContext.Current.CancellationToken
+                ).ToListAsync().AsTask()
+            )
+            .Should().ThrowAsync<ArgumentException>()
+            .WithMessage(
+                $"The data type * of the column 'Value' returned by the SQL statement is not " +
+                $"supported.*"
             );
 }
