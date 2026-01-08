@@ -64,7 +64,7 @@ public class SqlConnectionExtensions_QueryScalarsTests : DatabaseTestsBase
     [Fact]
     public void QueryScalars_CharTargetType_ColumnContainsStringWithLengthOne_ShouldGetFirstCharacter()
     {
-        var character = Generate.GenerateCharacter();
+        var character = Generate.Character();
 
         this.Connection.QueryScalars<Char>(
                 $"SELECT '{character}'",
@@ -373,7 +373,7 @@ public class SqlConnectionExtensions_QueryScalarsTests : DatabaseTestsBase
     [Fact]
     public async Task QueryScalarsAsync_CharTargetType_ColumnContainsStringWithLengthOne_ShouldGetFirstCharacter()
     {
-        var character = Generate.GenerateCharacter();
+        var character = Generate.Character();
 
         (await this.Connection.QueryScalarsAsync<Char>(
                 $"SELECT '{character}'",

@@ -186,7 +186,7 @@ public class SqlConnectionExtensions_ExecuteScalarTests : DatabaseTestsBase
     [Fact]
     public void ExecuteScalar_TargetTypeIsChar_ColumnValueIsStringWithLengthOne_ShouldGetFirstCharacter()
     {
-        var character = Generate.GenerateCharacter();
+        var character = Generate.Character();
 
         this.Connection.ExecuteScalar<Char>(
                 $"SELECT '{character}'",
@@ -490,7 +490,7 @@ public class SqlConnectionExtensions_ExecuteScalarTests : DatabaseTestsBase
     public async Task
         ExecuteScalarAsync_TargetTypeIsChar_ColumnValueIsStringWithLengthOne_ShouldGetFirstCharacter()
     {
-        var character = Generate.GenerateCharacter();
+        var character = Generate.Character();
 
         (await this.Connection.ExecuteScalarAsync<Char>(
                 $"SELECT '{character}'",

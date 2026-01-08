@@ -46,7 +46,42 @@ public static class Generate
             .RuleFor(a => a.Enum, a => a.Random.Enum<TestEnum>());
 
         faker = new();
+
+        temporaryTableTestItemFaker = new Faker<TemporaryTableTestItem>()
+            .StrictMode(true)
+            .RuleFor(a => a.Boolean, a => a.Random.Bool())
+            .RuleFor(a => a.Bytes, a => a.Random.Bytes(10))
+            .RuleFor(a => a.Char, a => a.Random.Char('A', 'Z'))
+            .RuleFor(a => a.DateTime, a => a.Date.Past())
+            .RuleFor(a => a.DateTimeOffset, a => a.Date.PastOffset())
+
+            // Limit Decimal to 10 digits to the right of the decimal point, because the corresponding column
+            // is of the data type DECIMAL(28,10).
+            .RuleFor(a => a.Decimal, a => Math.Round(a.Random.Decimal(0, 999), 10))
+            .RuleFor(a => a.Double, a => a.Random.Double(0, 999))
+            .RuleFor(a => a.Guid, a => a.Random.Guid())
+            .RuleFor(a => a.Int16, a => a.Random.Short())
+            .RuleFor(a => a.Int32, a => a.Random.Int())
+            .RuleFor(a => a.Int64, a => a.Random.Long())
+            .RuleFor(a => a.Single, a => a.Random.Float())
+            .RuleFor(a => a.String, a => a.Lorem.Sentence())
+            .RuleFor(a => a.TimeSpan, a => a.Date.Timespan(new TimeSpan(0, 23, 59, 59, 999)));
     }
+
+    /// <summary>
+    /// Generates the specified number of random bytes.
+    /// </summary>
+    /// <param name="numberOfBytes">The number of bytes to generate.</param>
+    /// <returns>An array containing the specified number of random bytes.</returns>
+    public static Byte[] Bytes(Int32 numberOfBytes) =>
+        faker.Random.Bytes(numberOfBytes);
+
+    /// <summary>
+    /// Generates a random character.
+    /// </summary>
+    /// <returns>A random character.</returns>
+    public static Char Character() =>
+        faker.Random.Char('A', 'z');
 
     /// <summary>
     /// Generates the specified number of <see cref="TestData.Entity" /> objects populated with test data.
@@ -124,13 +159,6 @@ public static class Generate
     /// <returns>A random value of the type <see cref="TestEnum" />.</returns>
     public static TestEnum Enum() =>
         faker.Random.Enum<TestEnum>();
-
-    /// <summary>
-    /// Generates a random character.
-    /// </summary>
-    /// <returns>A random character.</returns>
-    public static Char GenerateCharacter() =>
-        faker.Random.Char('A', 'z');
 
     /// <summary>
     /// Maps <paramref name="entities" /> to a list of <see cref="EntityWithTableAttribute" /> objects containing the
@@ -294,6 +322,17 @@ public static class Generate
         faker.Lorem.Sentence();
 
     /// <summary>
+    /// Generates the specified number of <see cref="TemporaryTableTestItem" /> objects populated with test data.
+    /// </summary>
+    /// <param name="numberOfItems">The number of <see cref="TemporaryTableTestItem" /> objects to generate.</param>
+    /// <returns>
+    /// A list containing the specified number of <see cref="TemporaryTableTestItem" /> objects populated with test
+    /// data.
+    /// </returns>
+    public static List<TemporaryTableTestItem> TemporaryTableTestItems(Int32 numberOfItems) =>
+        temporaryTableTestItemFaker.Generate(numberOfItems);
+
+    /// <summary>
     /// Creates a copy of <paramref name="entity" /> where all properties except <see cref="Entity.Id" /> have new
     /// values.
     /// </summary>
@@ -397,5 +436,6 @@ public static class Generate
     private static readonly Faker<EntityWithEnumStoredAsInteger> entityWithEnumStoredAsIntegerFaker;
     private static readonly Faker<EntityWithEnumStoredAsString> entityWithEnumStoredAsStringFaker;
     private static readonly Faker faker;
+    private static readonly Faker<TemporaryTableTestItem> temporaryTableTestItemFaker;
     private static Int64 entityId = 1;
 }

@@ -8,7 +8,7 @@ public class ValueConverterTests : TestsBase
     [Fact]
     public void ConvertValueToType_NonNullableCharTargetType_StringWithLengthOneValue_ShouldGetFirstCharacter()
     {
-        var character = Generate.GenerateCharacter();
+        var character = Generate.Character();
 
         ValueConverter.ConvertValueToType<Char>(character.ToString())
             .Should().Be(character);
@@ -110,7 +110,7 @@ public class ValueConverterTests : TestsBase
     [Fact]
     public void ConvertValueToType_NullableCharTargetType_StringValueWithLengthOne_ShouldGetFirstCharacter()
     {
-        var character = Generate.GenerateCharacter();
+        var character = Generate.Character();
 
         ValueConverter.ConvertValueToType<Char?>(character.ToString())
             .Should().Be(character);

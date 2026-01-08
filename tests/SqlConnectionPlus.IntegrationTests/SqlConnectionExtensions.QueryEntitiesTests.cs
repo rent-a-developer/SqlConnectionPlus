@@ -57,7 +57,7 @@ public class SqlConnectionExtensions_QueryEntitiesTests : DatabaseTestsBase
     [Fact]
     public void QueryEntities_CharEntityProperty_ColumnContainsStringWithLengthOne_ShouldGetFirstCharacter()
     {
-        var character = Generate.GenerateCharacter();
+        var character = Generate.Character();
 
         this.Connection.QueryEntities<EntityWithCharProperty>(
                 $"SELECT '{character}' AS Char",
@@ -337,12 +337,16 @@ public class SqlConnectionExtensions_QueryEntitiesTests : DatabaseTestsBase
     }
 
     [Fact]
-    public void QueryEntities_ShouldMaterializeBinaryData() =>
+    public void QueryEntities_ShouldMaterializeBinaryData()
+    {
+        var bytes = Generate.Bytes(Generate.SmallNumber());
+
         this.Connection.QueryEntities<EntityWithBinaryProperty>(
-                $"SELECT 0x250 AS BinaryData",
+                $"SELECT {Parameter(bytes)} AS BinaryData",
                 cancellationToken: TestContext.Current.CancellationToken
             )
-            .Should().BeEquivalentTo([new EntityWithBinaryProperty { BinaryData = [0x02, 0x50] }]);
+            .Should().BeEquivalentTo([new EntityWithBinaryProperty { BinaryData = bytes }]);
+    }
 
     [Fact]
     public void QueryEntities_Timeout_ShouldUseTimeout() =>
@@ -444,7 +448,7 @@ public class SqlConnectionExtensions_QueryEntitiesTests : DatabaseTestsBase
     public async Task
         QueryEntitiesAsync_CharEntityProperty_ColumnContainsStringWithLengthOne_ShouldGetFirstCharacter()
     {
-        var character = Generate.GenerateCharacter();
+        var character = Generate.Character();
 
         (await this.Connection.QueryEntitiesAsync<EntityWithCharProperty>(
                 $"SELECT '{character}' AS Char",
@@ -727,12 +731,16 @@ public class SqlConnectionExtensions_QueryEntitiesTests : DatabaseTestsBase
     }
 
     [Fact]
-    public async Task QueryEntitiesAsync_ShouldMaterializeBinaryData() =>
+    public async Task QueryEntitiesAsync_ShouldMaterializeBinaryData()
+    {
+        var bytes = Generate.Bytes(Generate.SmallNumber());
+
         (await this.Connection.QueryEntitiesAsync<EntityWithBinaryProperty>(
-            $"SELECT 0x250 AS BinaryData",
-            cancellationToken: TestContext.Current.CancellationToken
-        ).ToListAsync(TestContext.Current.CancellationToken))
-        .Should().BeEquivalentTo([new EntityWithBinaryProperty { BinaryData = [0x02, 0x50] }]);
+                $"SELECT {Parameter(bytes)} AS BinaryData",
+                cancellationToken: TestContext.Current.CancellationToken
+            ).ToListAsync(TestContext.Current.CancellationToken))
+            .Should().BeEquivalentTo([new EntityWithBinaryProperty { BinaryData = bytes }]);
+    }
 
     [Fact]
     public Task QueryEntitiesAsync_Timeout_ShouldUseTimeout() =>

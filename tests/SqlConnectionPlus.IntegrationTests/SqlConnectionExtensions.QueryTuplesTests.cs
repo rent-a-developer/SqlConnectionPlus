@@ -57,7 +57,7 @@ public class SqlConnectionExtensions_QueryTuplesTests : DatabaseTestsBase
     public void
         QueryTuples_CharValueTupleField_ColumnContainsStringWithLengthOne_ShouldGetFirstCharacter()
     {
-        var character = Generate.GenerateCharacter();
+        var character = Generate.Character();
 
         this.Connection.QueryTuples<ValueTuple<Char>>(
                 $"SELECT '{character}'",
@@ -300,6 +300,18 @@ public class SqlConnectionExtensions_QueryTuplesTests : DatabaseTestsBase
     }
 
     [Fact]
+    public void QueryTuples_ShouldMaterializeBinaryData()
+    {
+        var bytes = Generate.Bytes(Generate.SmallNumber());
+
+        this.Connection.QueryTuples<ValueTuple<Byte[]>>(
+                $"SELECT {Parameter(bytes)} AS BinaryData",
+                cancellationToken: TestContext.Current.CancellationToken
+            )
+            .Should().BeEquivalentTo([ValueTuple.Create(bytes)]);
+    }
+
+    [Fact]
     public void QueryTuples_Timeout_ShouldUseTimeout() =>
         Invoking(() =>
                 this.Connection.QueryTuples<ValueTuple<Int32>>(
@@ -412,7 +424,7 @@ public class SqlConnectionExtensions_QueryTuplesTests : DatabaseTestsBase
     public async Task
         QueryTuplesAsync_CharValueTupleField_ColumnContainsStringWithLengthOne_ShouldGetFirstCharacter()
     {
-        var character = Generate.GenerateCharacter();
+        var character = Generate.Character();
 
         (await this.Connection.QueryTuplesAsync<ValueTuple<Char>>(
                 $"SELECT '{character}'",
@@ -656,6 +668,18 @@ public class SqlConnectionExtensions_QueryTuplesTests : DatabaseTestsBase
                 cancellationToken: TestContext.Current.CancellationToken
             ).ToListAsync())
             .Should().BeEquivalentTo(entityIds.Select(a => ValueTuple.Create(a)));
+    }
+
+    [Fact]
+    public async Task QueryTuplesAsync_ShouldMaterializeBinaryData()
+    {
+        var bytes = Generate.Bytes(Generate.SmallNumber());
+
+        (await this.Connection.QueryTuplesAsync<ValueTuple<Byte[]>>(
+                $"SELECT {Parameter(bytes)} AS BinaryData",
+                cancellationToken: TestContext.Current.CancellationToken
+            ).ToListAsync())
+            .Should().BeEquivalentTo([ValueTuple.Create(bytes)]);
     }
 
     [Fact]

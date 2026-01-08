@@ -162,26 +162,7 @@ public class TemporarySqlServerTableBuilderTests : DatabaseTestsBase
     [Fact]
     public void BuildTemporaryTable_ComplexObjects_WithNullables_ShouldHandleNullValues()
     {
-        var itemsWithNulls = new List<TemporaryTableTestItem>
-        {
-            new()
-            {
-                Boolean = null,
-                Bytes = null,
-                Char = null,
-                Decimal = null,
-                Double = null,
-                Single = null,
-                Int16 = null,
-                Int32 = null,
-                Int64 = null,
-                DateTime = null,
-                DateTimeOffset = null,
-                String = null,
-                TimeSpan = null,
-                Guid = null
-            }
-        };
+        var itemsWithNulls = new List<TemporaryTableTestItem> { new() };
 
         using var table = TemporarySqlServerTableBuilder.BuildTemporaryTable(
             this.Connection,
@@ -549,26 +530,7 @@ public class TemporarySqlServerTableBuilderTests : DatabaseTestsBase
     [Fact]
     public async Task BuildTemporaryTableAsync_ComplexObjects_WithNullables_ShouldHandleNullValues()
     {
-        var itemsWithNulls = new List<TemporaryTableTestItem>
-        {
-            new()
-            {
-                Boolean = null,
-                Bytes = null,
-                Char = null,
-                Decimal = null,
-                Double = null,
-                Single = null,
-                Int16 = null,
-                Int32 = null,
-                Int64 = null,
-                DateTime = null,
-                DateTimeOffset = null,
-                String = null,
-                TimeSpan = null,
-                Guid = null
-            }
-        };
+        var itemsWithNulls = new List<TemporaryTableTestItem> { new() };
 
         using var table = await TemporarySqlServerTableBuilder.BuildTemporaryTableAsync(
             this.Connection,
@@ -813,42 +775,6 @@ public class TemporarySqlServerTableBuilderTests : DatabaseTestsBase
         "A", "B", "C"
     ];
 
-    private readonly List<TemporaryTableTestItem> temporaryTableTestItems =
-    [
-        new()
-        {
-            Boolean = true,
-            Bytes = [1, 2, 3, 4, 5],
-            Char = 'A',
-            Decimal = 123.45M,
-            Double = 123.45,
-            Single = 123.45F,
-            Int16 = 123,
-            Int32 = 123456,
-            Int64 = 1234567890,
-            DateTime = new(2025, 12, 30, 23, 59, 59),
-            DateTimeOffset = new(2025, 12, 30, 23, 59, 59, TimeSpan.FromHours(1)),
-            String = "Test String 1",
-            TimeSpan = new(1, 2, 3),
-            Guid = Guid.NewGuid()
-        },
-
-        new()
-        {
-            Boolean = false,
-            Bytes = [6, 7, 8],
-            Char = 'B',
-            Decimal = 223.45M,
-            Double = 223.45,
-            Single = 223.45F,
-            Int16 = 223,
-            Int32 = 223456,
-            Int64 = 2234567890,
-            DateTime = new(2025, 12, 31, 23, 59, 59),
-            DateTimeOffset = new(2025, 12, 31, 23, 59, 59, TimeSpan.FromHours(2)),
-            String = "Test String 2",
-            TimeSpan = new(4, 5, 6),
-            Guid = Guid.NewGuid()
-        }
-    ];
+    private readonly List<TemporaryTableTestItem> temporaryTableTestItems = 
+        Generate.TemporaryTableTestItems(Generate.SmallNumber());
 }
