@@ -9,22 +9,13 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<TieredCompilation>true</TieredCompilation>
-		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-		<PackageLicenseFile>LICENSE.md</PackageLicenseFile>
-		<PackageProjectUrl>https://github.com/rent-a-developer/SqlConnectionPlus</PackageProjectUrl>
-		<PackageIcon>Resources\icon.png</PackageIcon>
 		<RepositoryUrl>https://github.com/rent-a-developer/SqlConnectionPlus.git</RepositoryUrl>
 		<RepositoryType>GIT</RepositoryType>
 		<Description>A focused set of extension methods for Microsoft.Data.SqlClient.SqlConnection that reduce boilerplate code, boost productivity, and make working with SQL Server in C# more enjoyable.</Description>
-		<PackageTags>sql server SqlConnection extensions ORM connection entity insert delete update CRUD</PackageTags>
-		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<IncludeSymbols>true</IncludeSymbols>
-		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
-		<Version>1.0.0</Version>
-		<PackageReleaseNotes>Initial release.</PackageReleaseNotes>
+		<Version>1.0.1</Version>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
 		<EnableNETAnalyzers>True</EnableNETAnalyzers>
 		<AnalysisLevel>latest-all</AnalysisLevel>
@@ -34,6 +25,16 @@
 		<AssemblyTitle>rent-a-developer SqlConnectionPlus</AssemblyTitle>
 		<AssemblyName>RentADeveloper.SqlConnectionPlus</AssemblyName>
 		<DocumentationFile>RentADeveloper.SqlConnectionPlus.xml</DocumentationFile>
+		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+		<PackageId>RentADeveloper.SqlConnectionPlus</PackageId>
+		<PackageReleaseNotes>Fixed issue with icon.</PackageReleaseNotes>
+		<PackageProjectUrl>https://github.com/rent-a-developer/SqlConnectionPlus</PackageProjectUrl>
+		<PackageTags>sql server SqlConnection extensions ORM connection entity insert delete update CRUD</PackageTags>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+		<PackageIcon>Resources\icon.png</PackageIcon>
+		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 	</PropertyGroup>
 
 	<ItemGroup>

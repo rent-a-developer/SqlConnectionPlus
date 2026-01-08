@@ -1,9 +1,9 @@
 [![NuGet Version](https://img.shields.io/nuget/v/RentADeveloper.SqlConnectionPlus)](https://www.nuget.org/packages/RentADeveloper.SqlConnectionPlus/)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=rent-a-developer_SqlConnectionPlus&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=rent-a-developer_SqlConnectionPlus)
 [![license](https://img.shields.io/badge/License-MIT-purple.svg)](LICENSE.md)
-![semver](https://img.shields.io/badge/semver-1.0.0-blue)
+![semver](https://img.shields.io/badge/semver-1.0.1-blue)
 
-# ![image icon](https://raw.githubusercontent.com/rent-a-developer/SqlConnectionPlus/main/icon32.png) SqlConnectionPlus
+# ![image icon](https://raw.githubusercontent.com/rent-a-developer/SqlConnectionPlus/main/icon.png) SqlConnectionPlus
 A focused set of extension methods for
 [Microsoft.Data.SqlClient.SqlConnection](https://learn.microsoft.com/dotnet/api/microsoft.data.sqlclient.sqlconnection)
 that reduce boilerplate code, boost productivity, and make working with SQL Server in C# more enjoyable.
