@@ -14,7 +14,7 @@
 		<Description>A focused set of extension methods for Microsoft.Data.SqlClient.SqlConnection that reduce boilerplate code, boost productivity, and make working with SQL Server in C# more enjoyable.</Description>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<IncludeSymbols>true</IncludeSymbols>
-		<Version>1.0.1</Version>
+		<Version>2.0.0</Version>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
 		<EnableNETAnalyzers>True</EnableNETAnalyzers>
@@ -26,8 +26,8 @@
 		<AssemblyName>RentADeveloper.SqlConnectionPlus</AssemblyName>
 		<DocumentationFile>RentADeveloper.SqlConnectionPlus.xml</DocumentationFile>
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-		<PackageId>RentADeveloper.SqlConnectionPlus</PackageId>
-		<PackageReleaseNotes>Fixed issue with icon.</PackageReleaseNotes>
+		<PackageId>SqlConnectionPlus</PackageId>
+		<PackageReleaseNotes>See CHANGELOG.md.</PackageReleaseNotes>
 		<PackageProjectUrl>https://github.com/rent-a-developer/SqlConnectionPlus</PackageProjectUrl>
 		<PackageTags>sql server SqlConnection extensions ORM connection entity insert delete update CRUD</PackageTags>
 		<PackageReadmeFile>README.md</PackageReadmeFile>

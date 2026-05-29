@@ -1,7 +1,7 @@
-[![NuGet Version](https://img.shields.io/nuget/v/RentADeveloper.SqlConnectionPlus)](https://www.nuget.org/packages/RentADeveloper.SqlConnectionPlus/)
+[![NuGet Version](https://img.shields.io/nuget/v/SqlConnectionPlus)](https://www.nuget.org/packages/SqlConnectionPlus/)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=rent-a-developer_SqlConnectionPlus&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=rent-a-developer_SqlConnectionPlus)
 [![license](https://img.shields.io/badge/License-MIT-purple.svg)](LICENSE.md)
-![semver](https://img.shields.io/badge/semver-1.0.1-blue)
+![semver](https://img.shields.io/badge/semver-2.0.0-blue)
 
 # ![image icon](https://raw.githubusercontent.com/rent-a-developer/SqlConnectionPlus/main/icon.png) SqlConnectionPlus
 A focused set of extension methods for
@@ -62,10 +62,10 @@ Highlights:
 ## Installation
 First, [install NuGet](http://docs.nuget.org/docs/start-here/installing-nuget).
 
-Then install the [NuGet package](https://www.nuget.org/packages/RentADeveloper.SqlConnectionPlus/) from the package
+Then install the [NuGet package](https://www.nuget.org/packages/SqlConnectionPlus/) from the package
 manager console:
 ~~~shell
-PM> Install-Package RentADeveloper.SqlConnectionPlus
+PM> Install-Package SqlConnectionPlus
 ~~~
 
 ## Quick start
